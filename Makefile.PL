@@ -1,18 +1,18 @@
 use strict;
 use warnings;
 
-use 5.016;
+use 5.006;
 
 use ExtUtils::MakeMaker 6.63;
 
 my %WriteMakefileArgs = (
     NAME                  => 'Str::Filter',
-    AUTHOR                => q{Trevor Cornpropst tscornpropst@gmail.com},
-    VERSION_FROM          => '',
-    ABSTRACT_FROM         => '',
-    LICENSE               => 'Artistic_2_0',
-    DISTNAME              => '',
-    MIN_PERL_VERSION      => 5.016,
+    AUTHOR                => 'Trevor S. Cornpropst <tscornpropst@gmail.com>',
+    VERSION_FROM          => 'lib/Str/Filter.pm',
+    ABSTRACT_FROM         => 'lib/Str/Filter.pm',
+    LICENSE               => 'artistic_2',
+    DISTNAME              => 'Str-Filter',
+    MIN_PERL_VERSION      => 5.006,
     BUILD_REQUIRES        => {
         'ExtUtils::MakeMaker' => 6.63,
     },
@@ -20,22 +20,17 @@ my %WriteMakefileArgs = (
         'ExtUtils::MakeMaker' => 6.63,
     },
     PREREQ_PM             => {
-        'Carp'            => 0,
-        'POSIX'           => 0,
-        #'Some::Module' => 1.23,
+        'HTML::Strip'     => 0,
     },
     TEST_REQUIRES         => {
         'Test::More'      => 0,
-        'Test::Exception' => 0,
     },
     test                  => { "TESTS" => "t/*.t", },
     dist                  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean                 => { FILES => '-*' },
 );
 
 my %FallbackPrereqs = (
-    'Carp'                => 0,
-    'POSIX'               => 0,
+    'HTML::Strip'         => 0,
 );
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
@@ -47,4 +42,4 @@ unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
 delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
     unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
-WriteMakeFile(%WriteMakefileArgs);
+WriteMakefile(%WriteMakefileArgs);
