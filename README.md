@@ -9,6 +9,10 @@ Garbage in, goodness out...
 
 Str::Filter is a collection of common routines for processing mainly input data but also works to filter outbound data. These filters are intended to be called in high volume environments so, there is not a lot of handing data back and forth. These subs work on the actual value passed so, beware, your data WILL be transformed.
 
+There are additional filtering capabilities. See `perldoc Str::Filter`.
+
+Feel free to submit requests for additional features/filters.
+
 ## USAGE
 
 ```
